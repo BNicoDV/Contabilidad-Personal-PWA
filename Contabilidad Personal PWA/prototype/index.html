@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1f3a" />
+  <title>Finanzas · Prototipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar (desktop) -->
+    <aside class="sidebar" aria-label="Navegación principal">
+      <div class="brand">
+        <span class="brand-mark">₿</span>
+        <span class="brand-name">Mis Finanzas</span>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard" aria-current="page">
+          <span class="nav-ico">◈</span><span>Resumen</span>
+        </button>
+        <button class="nav-item" data-view="movimientos">
+          <span class="nav-ico">≣</span><span>Movimientos</span>
+        </button>
+        <button class="nav-item" data-view="prestamos">
+          <span class="nav-ico">⇄</span><span>Préstamos</span>
+        </button>
+        <button class="nav-item" data-view="ia">
+          <span class="nav-ico">✦</span><span>Consejos IA</span>
+        </button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="month-pill">
+          <span>Septiembre 2026</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 class="page-title" id="pageTitle">Resumen</h1>
+          <p class="page-sub" id="pageSub">Tu mes de un vistazo</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-icon" aria-label="Buscar">⌕</button>
+          <button class="btn-primary" id="addBtn">+ Movimiento</button>
+        </div>
+      </header>
+
+      <div class="content" id="content"><!-- render dinámico --></div>
+    </main>
+
+    <!-- Bottom nav (móvil) -->
+    <nav class="bottom-nav" aria-label="Navegación móvil">
+      <button class="bn-item active" data-view="dashboard"><span>◈</span><small>Resumen</small></button>
+      <button class="bn-item" data-view="movimientos"><span>≣</span><small>Movim.</small></button>
+      <button class="bn-fab" id="addBtnMobile" aria-label="Agregar movimiento">+</button>
+      <button class="bn-item" data-view="prestamos"><span>⇄</span><small>Préstamos</small></button>
+      <button class="bn-item" data-view="ia"><span>✦</span><small>IA</small></button>
+    </nav>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

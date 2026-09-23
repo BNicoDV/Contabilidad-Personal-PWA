@@ -1,0 +1,98 @@
+// Datos de ejemplo extraídos de la hoja "septiembre" del libro de Excel.
+// Los montos están en pesos colombianos (COP).
+// tipo: 'ingreso' | 'prestamo' | 'gasto'
+// medio: 'efectivo' | 'davivienda' | 'daviplata' | null (cuando no se especifica)
+
+const MES_ACTUAL = {
+  nombre: 'Septiembre 2026',
+  saldos: {
+    efectivo: 1671000,
+    davivienda: 38185805,
+    daviplata: 710912,
+  },
+  // Valores tomados del resumen de la hoja para conciliar con la app
+  resumen: {
+    totalTengo: 40567717,
+    totalGastos: 3699902,
+    totalMasPrestamos: 40992717,
+    prestamosPorCobrar: 425000,
+    descuadre: -32,
+    disponibleMes: 40567685,
+    deudasFijas: 1248212,
+  },
+  movimientos: [
+    // Ingresos
+    { tipo: 'ingreso', monto: 44267587, desc: 'Sueldo junio <3 + prestamo 3M doña betty', fecha: '2026-09-01' },
+    { tipo: 'ingreso', monto: 217764, desc: 'Rendimiento Bolsillo', fecha: '2026-09-01' },
+    { tipo: 'ingreso', monto: 520000, desc: 'Regalo cumpleaños familia', fecha: '2026-09-01' },
+    { tipo: 'ingreso', monto: 200000, desc: 'Pago lady - polo agosto + prestamo movistar', fecha: '2026-09-10' },
+    { tipo: 'ingreso', monto: 46000, desc: 'Echeverry paga PS4', fecha: '2026-09-17' },
+    { tipo: 'ingreso', monto: 125000, desc: 'Mamá cuota Addi olla express', fecha: '2026-09-01' },
+
+    // Préstamos que doy (por cobrar)
+    { tipo: 'prestamo', monto: 425000, desc: 'Presto Lady universidad', fecha: '2026-09-01' },
+    { tipo: 'prestamo', monto: 100000, desc: 'Presto lendisiña efectivo', fecha: '2026-09-19' },
+    { tipo: 'prestamo', monto: 140000, desc: 'Presto lendisiña daviplata', fecha: '2026-09-19' },
+    { tipo: 'prestamo', monto: 58000, desc: 'Presto lendisiña movistar daviplata', fecha: '2026-09-19' },
+    { tipo: 'prestamo', monto: 51010, desc: 'Presto Lendisiña Universidad', fecha: '2026-09-19' },
+
+    // Gastos
+    { tipo: 'gasto', monto: 31500, desc: 'Six polas, barra cereal y gelatinas nicoletas', fecha: '2026-08-29', cat: 'Ocio' },
+    { tipo: 'gasto', monto: 404622, desc: 'Universidad Pago', fecha: '2026-08-30', cat: 'Educación' },
+    { tipo: 'gasto', monto: 15000, desc: 'Cuarto de pollo', fecha: '2026-08-30', cat: 'Comida' },
+    { tipo: 'gasto', monto: 26000, desc: 'Frutas para nicoletas', fecha: '2026-08-29', cat: 'Comida' },
+    { tipo: 'gasto', monto: 20000, desc: 'Cometa y cosas varias', fecha: '2026-08-30', cat: 'Varios' },
+    { tipo: 'gasto', monto: 349500, desc: '5 meses gym', fecha: '2026-08-31', cat: 'Salud' },
+    { tipo: 'gasto', monto: 20000, desc: 'Sandwiches', fecha: '2026-08-31', cat: 'Comida' },
+    { tipo: 'gasto', monto: 100000, desc: 'Indrive y polas equipo', fecha: '2026-09-04', cat: 'Transporte' },
+    { tipo: 'gasto', monto: 40000, desc: 'Camiseta Cafe regalo', fecha: '2026-09-04', cat: 'Ropa' },
+    { tipo: 'gasto', monto: 23000, desc: 'Almuerzo con michael y camilo', fecha: '2026-09-04', cat: 'Comida' },
+    { tipo: 'gasto', monto: 200000, desc: 'Comida matadero', fecha: '2026-09-05', cat: 'Comida' },
+    { tipo: 'gasto', monto: 19600, desc: 'Carne nicoletas', fecha: '2026-09-05', cat: 'Comida' },
+    { tipo: 'gasto', monto: 15000, desc: 'Indrive a ver el carro rojo', fecha: '2026-09-05', cat: 'Transporte' },
+    { tipo: 'gasto', monto: 15300, desc: 'Indrive a ver el carro rojo', fecha: '2026-09-05', cat: 'Transporte' },
+    { tipo: 'gasto', monto: 10000, desc: 'Arepa y chicles', fecha: '2026-09-04', cat: 'Comida' },
+    { tipo: 'gasto', monto: 10000, desc: 'Empanadas', fecha: '2026-09-04', cat: 'Comida' },
+    { tipo: 'gasto', monto: 15500, desc: 'Huevos', fecha: '2026-09-02', cat: 'Comida' },
+    { tipo: 'gasto', monto: 30000, desc: 'Paso por llave daviplata', fecha: '2026-09-01', cat: 'Varios' },
+    { tipo: 'gasto', monto: 20000, desc: 'Tamales', fecha: '2026-09-06', cat: 'Comida' },
+    { tipo: 'gasto', monto: 94000, desc: 'Polas Cumpleaños', fecha: '2026-09-06', cat: 'Ocio' },
+    { tipo: 'gasto', monto: 47000, desc: 'Claro hogar', fecha: '2026-09-08', cat: 'Servicios' },
+    { tipo: 'gasto', monto: 40000, desc: 'Huevos y papa', fecha: '2026-09-07', cat: 'Comida' },
+    { tipo: 'gasto', monto: 10000, desc: 'Pago boleta Camilo', fecha: '2026-09-09', cat: 'Ocio' },
+    { tipo: 'gasto', monto: 40000, desc: 'Cosas varias', fecha: '2026-09-01', cat: 'Varios' },
+    { tipo: 'gasto', monto: 40500, desc: 'Camisa de cumpleaños', fecha: '2026-09-01', cat: 'Ropa' },
+    { tipo: 'gasto', monto: 71700, desc: 'Recibo Gas - Ayudas ubaque', fecha: '2026-09-11', cat: 'Servicios' },
+    { tipo: 'gasto', monto: 14000, desc: 'Indrive peritaje', fecha: '2026-09-11', cat: 'Transporte' },
+    { tipo: 'gasto', monto: 75000, desc: 'Peritaje', fecha: '2026-09-11', cat: 'Varios' },
+    { tipo: 'gasto', monto: 20000, desc: 'Empanadas peritaje', fecha: '2026-09-11', cat: 'Comida' },
+    { tipo: 'gasto', monto: 39000, desc: 'Perros y jugo', fecha: '2026-09-10', cat: 'Comida' },
+    { tipo: 'gasto', monto: 2000, desc: 'Cosas varias', fecha: '2026-09-12', cat: 'Varios' },
+    { tipo: 'gasto', monto: 50000, desc: 'Pizza little cesars', fecha: '2026-09-13', cat: 'Comida' },
+    { tipo: 'gasto', monto: 27000, desc: 'Indrive', fecha: '2026-09-12', cat: 'Transporte' },
+    { tipo: 'gasto', monto: 9000, desc: 'Gmail', fecha: '2026-09-01', cat: 'Servicios' },
+    { tipo: 'gasto', monto: 60000, desc: 'Polas', fecha: '2026-09-12', cat: 'Ocio' },
+    { tipo: 'gasto', monto: 10000, desc: 'Tamales', fecha: '2026-09-13', cat: 'Comida' },
+    { tipo: 'gasto', monto: 23000, desc: 'Indriver', fecha: '2026-09-13', cat: 'Transporte' },
+    { tipo: 'gasto', monto: 73290, desc: 'Tarjeta Codensa', fecha: '2026-09-16', cat: 'Tarjetas' },
+    { tipo: 'gasto', monto: 125800, desc: 'Addi', fecha: '2026-09-16', cat: 'Tarjetas' },
+    { tipo: 'gasto', monto: 20000, desc: 'Comida pacha', fecha: '2026-09-16', cat: 'Comida' },
+    { tipo: 'gasto', monto: 13500, desc: 'Oxxo cigarro y cocacola', fecha: '2026-09-16', cat: 'Ocio' },
+    { tipo: 'gasto', monto: 129421, desc: 'Pago Tarjeta NU', fecha: '2026-09-17', cat: 'Tarjetas' },
+    { tipo: 'gasto', monto: 20000, desc: 'Cosas D1 talcos y ambientador', fecha: '2026-09-16', cat: 'Hogar' },
+    { tipo: 'gasto', monto: 133549, desc: 'Pago claro hogar', fecha: '2026-09-17', cat: 'Servicios' },
+    { tipo: 'gasto', monto: 60000, desc: 'Regalos amor y amistad', fecha: '2026-09-19', cat: 'Regalos' },
+    { tipo: 'gasto', monto: 11600, desc: 'Cosas varias', fecha: '2026-09-19', cat: 'Varios' },
+    { tipo: 'gasto', monto: 40000, desc: 'Regalo tia Martha cumpleaños', fecha: '2026-09-19', cat: 'Regalos' },
+    { tipo: 'gasto', monto: 79500, desc: 'Trago con nicoletas', fecha: '2026-09-20', cat: 'Ocio' },
+    { tipo: 'gasto', monto: 9000, desc: 'Chicles con nicoletas', fecha: '2026-09-20', cat: 'Comida' },
+    { tipo: 'gasto', monto: 38000, desc: 'Arena Gata y ajos', fecha: '2026-09-21', cat: 'Hogar' },
+    { tipo: 'gasto', monto: 40000, desc: 'Botellones de agua', fecha: '2026-09-22', cat: 'Hogar' },
+  ],
+  // Cuentas por persona (lógica exacta por confirmar)
+  personas: [
+    { nombre: 'Mafe', saldo: 117510, nota: 'Total mafe (abona 1M 13/08)' },
+    { nombre: 'Lady', saldo: 425000, nota: 'Presto universidad' },
+    { nombre: 'Mamá', saldo: -18000, nota: 'Le debo' },
+  ],
+};
